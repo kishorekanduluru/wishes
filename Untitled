@@ -1,0 +1,22 @@
+var pgp = require('pg-promise')(/*options*/);
+var cn = {
+  host: '35.184.60.166', // server name or IP address;
+  port: 5432,
+  database: 'wishes',
+  user: 'postgres',
+  password: "123"
+};
+var db = pgp(cn);
+
+
+
+
+
+
+CREATE TABLE users(
+ id uuid PRIMARY KEY DEFAULT uuid_generate_v4()
+ USERNAME TEXT,
+ WISHES TEXT,
+ PROFILE_LINK TEXT,
+ BACKGROUND_LINK TEXT
+);
