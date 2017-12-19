@@ -13,6 +13,7 @@ var formidable = require("formidable");
 var fileUpload = require('express-fileupload');
 var shortid = require('shortid');
 
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -28,7 +29,7 @@ var Jimp = require("jimp");
 
 var pgp = require('pg-promise')(/*options*/);
 var cn = {
-  host: '35.184.60.166', // server name or IP address;
+  host: '35.226.86.105', // server name or IP address;
   port: 5432,
   database: 'wishes',
   user: 'postgres',
@@ -39,46 +40,105 @@ var db = pgp(cn);
 var path = require('path'),
     fs = require('fs');
 var UUID = require('uuid-js');
-
+var url = require('url');
+app.use(function(req, res, next) {
+    req.getUrl = function() {
+      return req.protocol + "://" + req.get('host') + req.originalUrl;
+    }
+    return next();
+  });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var default_link = 'https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/'+encodeURI(image.img);
-app.get('/', function (req, res) {
-  var name = req.query.name;
-  var language = req.query.language || 'english';
-  var params= {};
-  var query = 'SELECT * FROM images WHERE language= ${language}';
-  params.language = language;
 
-  if(language){
-    db.any(query, params)
-    .then(images => {
-      images.forEach( function (image)
-      {
-        image.link = 'https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/'+encodeURI(image.img);
-        image.src = '/?language='+params.language+'&name='+image.image_name;
-      });
-      image = images.filter(image => image.image_name === name);
-      if(image.length>0){
-        link = image[0].link;
-        res.render('home', {image: 'image[0].link', items: images});
-      }
-    })
-    .catch(error => {
-        res.render('home', {image: default_link,items: []});
-    });
-  }
-  else{
-    res.render('home', {image: default_link,items: []});
-  }
+
+const { Pool, Client } = require('pg')
+const connectionString = 'postgresql://postgres:123@35.226.86.105:5432/wishes';
+const client = new Client({
+  user: 'postgres',
+  host: '35.226.86.105',
+  database: 'wishes',
+  password: '123',
+  port: 5432,
+});
+
+//
+// const client = new pg.Client(connectionString);
+// client.connect();
+// const query = client.query(
+//   'select * from images');
+//   query.on('end', () => { client.end(); });
+
+app.get('/', function (req, res) {
+
+  // var name = req.query.name;
+  // var from = req.query.from || '';
+  // var language = req.query.lan || 'telugu';
+  var params= {};
+  var query = 'SELECT * FROM images WHERE language= $1';
+  // params.language = language;
+  console.log(req.headers);
+  var name = req.query.name|| 'jagan';
+  var from = req.query.from || '';
+  var language = req.query.language || 'telugu';
+
+  var path = req.getUrl();
+  var items = getItems(req.query);
+  var image = items.filter(image => image.name === name);
+  console.log(image);
+  var default_link = "https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg";
+  // res.render('home', {image: default_link, items: [], from: from});
+  res.render('home', {image: image[0].link, items: items, from: from, language: language, name: name, url: path});
+  // if(language){
+  //   db.any(query, [language])
+  //   .then(images => {
+  //     console.log("success");
+  //     images.forEach( function (item){
+  //       item.link = 'https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/'+encodeURI(item.image);
+  //       item.src = '/?language='+params.language+'&name='+item.image_name;
+  //     });
+  //     var image = images.filter(image => image.image_name === name);
+  //     if(image.length>0){
+  //       // console.log(image);
+  //       link = image[0].link;
+  //       res.render('home', {image: image[0].link, items: images, from: from, language: language, name: name, url: path});
+  //     }
+  //     else{
+  //       res.render('home', {image: default_link, items: images, from: from, language: language, name: name, url: path});
+  //     }
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //     res.render('home', {image: default_link, items: [], from: ''});
+  //   });
+  //   res.render('home', {image: default_link, items: [], from: ''});
+  // }else{
+  //   res.render('home', {image: default_link, items: [], from: ''});
+  // }
 });
 
 
+function getItems(params){
+  var name = params.name|| 'jagan';
+  var from = params.from || '';
+  var language = params.language || 'telugu';
+  var telugu = [{
+    "name" : 'venkateswara_swamy',
+    "link" : 'https://storage.cloud.google.com/wishesonline-188118.appspot.com/61nCf7fw4OL.jpg',
+    "src" : '/?language='+language+'&name=venkateswara_swamy&from='+from
+  },
+  {
+    "name" : 'jagan',
+    'link' : 'https://storage.cloud.google.com/wishesonline-188118.appspot.com/61nCf7fw4OL.jpg',
+    "src" : '/?language='+language+'&name=jagan&from='+from
+  }];
+  if(language === "telugu"){
+    return telugu;
+  }
+}
 
 // var storage = GoogleCloudStorage({
 //   projectId: 'wishesonline-188118',
@@ -97,7 +157,7 @@ app.get('/', function (req, res) {
 //   var params= {}
 //   var username = req.body.username;
 //   var file = req.files.profile_pic;
-//   var img_name = file.name;
+//   var pg_name = file.name;
 //   file.name = shortid.generate().concat(file.name);
 //   var path = 'public/images/upload_images/'+file.name;
 //   if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
@@ -149,6 +209,7 @@ app.get('/', function (req, res) {
 //   // var id = req.params.id;
 //   // db.one('SELECT * FROM users WHERE id= $1', id)
 //   // .then(user => {
+
 //   //   // var link= "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url="+encodeURI(user.profile_link)+"&container=focus&resize_w=350";
 //   //   res.render('profile', {image: "drinkjpg", wishes: "testin"});
 //   // })

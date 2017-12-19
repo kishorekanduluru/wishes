@@ -1,16 +1,17 @@
 <html>
   <head>
     <meta charset="uft-8">
-    <title>Fireworks!</title>
+    <title>Wishes for all</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional Bootstrap theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="stylesheets/fireworks.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="How to change the address bar color in Chrome, Firefox, Opera, Safari" />
-    <meta property="og:description" content="How to change the address bar color in Chrome, Firefox, Opera, Safari" />
-    <meta property="og:url" content="http://webdevelopmentscripts.com/64-how-to-change-the-address-bar-color-in-chrome-firefox-opera-safari" />
-    <meta property="og:image" content="http://webdevelopmentscripts.com/post-images/685b-change-browser-address-bar-color-chrome-android.jpeg" />
+    <meta name="description" content="greeting card, wishes, god, polititcs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Share your greetings to your dear ones" />
+    <meta property="og:description" content="Share your greetings to your dear ones" />
+    <meta property="og:url" content="https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg" />
+    <meta property="og:image" content="https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg" />
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -19,13 +20,6 @@
       });
     </script>
   </head>
-  <style media="screen">
-  /*body {
-          background-image: url("images/ysrcp.jpg");
-  }*/
-  </style>
-
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="js/requestanimframe.js"></script>
@@ -41,7 +35,7 @@
       <nav class="navbar navbar-default navbar-fixed-side">
       <ul>
         {{#each items}}
-          <li><a class="active" href={{this.src}}>{{this.image_name}}</a></li>
+          <li><a class="active" href={{this.src}}>{{this.name}}</a></li>
         {{/each}}
       </ul>
 
@@ -68,12 +62,25 @@
           </div>
         </div>
         <div class="text">
+          {{#if from}}
+            {{from}} wishing you and your family
+          {{/if}}
          Happy New Year 2018
        </div>
         <div class="image-div">
          <div><img alt="User Pic dd" src={{image}} class="img-circle img-responsive"></div>
-         <a href="whatsapp://send?text=https://wishess4all.com">Share</a>
+         <a href="whatsapp://send?text={{url}}">Share</a>
        </div>
+
+       <form action="/">
+         <input type="text" id="from" name="from"/>
+         <input type="hidden" name="lan" value={{language}}>
+         <input type="hidden" name="name" value={{name}}>
+         <input type="submit" value="Submit">
+       </form>
+
+
+
         <div>
           <div class="bomb-rocket"></div>
           <div class="bomb-rocket"></div>
