@@ -31,17 +31,10 @@
 
   <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-3 col-lg-2">
-      <nav class="navbar navbar-default navbar-fixed-side">
-      <ul>
-        {{#each items}}
-          <li><a class="active" href={{this.src}}>{{this.name}}</a></li>
-        {{/each}}
-      </ul>
 
-      </nav>
-    </div>
-    <div class="col-sm-9 col-lg-10">
+
+
+    <div class="col-sm-12 col-lg-12 col-xs-12 col-md-12">
       <div class="main-div">
         <div id="clockdiv">
           <div>
@@ -67,16 +60,23 @@
           {{/if}}
          Happy New Year 2018
        </div>
-        <div class="image-div">
-         <div><img alt="User Pic dd" src={{image}} class="img-circle img-responsive"></div>
-         <a href="whatsapp://send?text={{url}}">Share</a>
-       </div>
+       <nav class="nav navbar-nav">
 
-       <form action="/">
-         <input type="text" id="from" name="from"/>
+         {{#each items}}
+           <a class="active btn btn-sm" href={{this.src}}>{{this.name}}</a>
+         {{/each}}
+       </nav>
+        <div class="image-div">
+         <div><img alt="User Pic dd" src='/images/venkateswara.jpg' class="img-circle img-responsive"></div>
+         <br/>
+         <a href="whatsapp://send?text={{url}}" class="btn btn-default">Share</a>
+       </div>
+       <br/>
+       <form action="/" class="form-group">
+         <input type="text" id="from" name="from" class="form-control" />
          <input type="hidden" name="lan" value={{language}}>
-         <input type="hidden" name="name" value={{name}}>
-         <input type="submit" value="Submit">
+         <input type="hidden" name="name" value={{name}} >
+         <input type="submit" value="Submit" class="btn btn-primary">
        </form>
 
 
