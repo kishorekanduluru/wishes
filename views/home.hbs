@@ -13,12 +13,6 @@
     <meta property="og:url" content="https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg" />
     <meta property="og:image" content="https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg" />
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-4106189189591889",
-        enable_page_level_ads: true
-      });
-    </script>
   </head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -28,11 +22,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <body>
-
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-2977947272382604",
+      enable_page_level_ads: true
+    });
+  </script>
   <div class="container-fluid">
   <div class="row">
-
-
 
     <div class="col-sm-12 col-lg-12 col-xs-12 col-md-12">
       <div class="main-div">
@@ -58,7 +55,7 @@
           {{#if from}}
             {{from}} wishing you and your family
           {{/if}}
-         Happy New Year 2018
+          Happy New Year 2018
        </div>
        <nav class="nav navbar-nav">
 
@@ -69,17 +66,29 @@
         <div class="image-div">
          <div><img alt="User Pic dd" src='/images/venkateswara.jpg' class="img-circle img-responsive"></div>
          <br/>
-         <a href="whatsapp://send?text={{url}}" class="btn btn-default">Share</a>
+         <button onclick="document.getElementById('whatsapp-modal-dialog').style.display='block'" style="width:auto;">Share</button>
        </div>
        <br/>
-       <form action="/" class="form-group">
+       <!-- <form action="/" class="form-group">
          <input type="text" id="from" name="from" class="form-control" />
-         <input type="hidden" name="lan" value={{language}}>
-         <input type="hidden" name="name" value={{name}} >
+         <input type="hidden" name="lan" id="lan" value={{language}}>
+           <input type="hidden" name="name" id="name" value={{name}} >
          <input type="submit" value="Submit" class="btn btn-primary">
-       </form>
+       </form> -->
 
+      <div id="whatsapp-modal-dialog" class="modal">
+        <form action="/" class="form-group">
+        <div class="container">
+          <label><b></b></label>
+          <input type="hidden" name="lan" id="lan" value={{language}}>
+          <input type="hidden" name="name" id="name" value={{name}} >
+          <input type="text" placeholder="Hey!!! Enter Your Name" name="from" id="from">
+          <input type="submit" value="Submit" class="btn btn-success">
+          <button type="button" onclick="document.getElementById('whatsapp-modal-dialog').style.display='none'" class="btn btn-default cancelbtn">Cancel</button>
+        </div>
 
+        </form>
+      </div>
 
         <div>
           <div class="bomb-rocket"></div>
@@ -151,12 +160,14 @@ var diff = new_year_secs-currentTime_secs;
 var deadline = new Date(Date.parse(new Date()) + diff);
 initializeClock('clockdiv', deadline);
 
-</script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4106189189591889",
-    enable_page_level_ads: true
-  });
+var modal = document.getElementById('whatsapp-modal-dialog');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 </script>
 </html>
