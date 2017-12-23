@@ -25,7 +25,7 @@
       font-size: 16px;
     }
     .image-div{
-      margin-left: 19%;
+      /* margin-left: 19%; */
       height: 50%;
     }
     .img-div{
@@ -240,17 +240,17 @@ li a:hover:not(.active) {
 }
 
 .anim-down {
-  position: absolute;
+  position: fixed;
     color: white;
-    width: 20px;
+    width: 30px;
     height: 100vh;
     left: 0;
 }
 
 .anim-up {
-  position: absolute;
+  position: fixed;
     color: white;
-    width: 20px;
+    width: 30px;
     height: 100vh;
     right: 0;
 }
