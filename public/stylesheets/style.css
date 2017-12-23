@@ -109,6 +109,7 @@ li a:hover:not(.active) {
 
 .img-circle {
   margin: 0 auto;
+  border-radius: 0 !important;
 }
 
 .navbar-default {
@@ -121,6 +122,12 @@ li a:hover:not(.active) {
   white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+}
+
+.navbar-nav .btn-default {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  text-shadow: none !important;
 }
 .navbar-nav ul {
   margin: 0 auto;
@@ -211,4 +218,39 @@ li a:hover:not(.active) {
     .cancelbtn {
        width: 100%;
     }
+}
+
+
+@keyframes shake {
+  from {
+    -webkit-transform: rotate(8deg);
+    transform: rotate(8deg);
+ }
+ to {
+   -webkit-transform-origin:center center;
+   -webkit-transform: rotate(-8deg);
+   transform: rotate(-8deg);
+ }
+}
+
+.wa_btn_s {
+
+   -webkit-animation: shake 0.1s ease-in-out 0.1s infinite alternate;
+
+}
+
+.anim-down {
+  position: absolute;
+    color: white;
+    width: 20px;
+    height: 100vh;
+    left: 0;
+}
+
+.anim-up {
+  position: absolute;
+    color: white;
+    width: 20px;
+    height: 100vh;
+    right: 0;
 }

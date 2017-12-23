@@ -38,10 +38,17 @@
      <link itemprop="url" href="http://www.yoursite.com/yourimage.jpg">
    </span>
   <div class="container-fluid">
+    <marquee behavior="scroll" direction="down" scrolldelay="4" class="anim-down">
+
+    </marquee>
+    <marquee behavior="scroll" direction="up" scrolldelay="4" class="anim-up">
+
+    </marquee>
   <div class="row">
 
     <div class="col-sm-12 col-lg-12 col-xs-12 col-md-12">
       <div class="main-div">
+
         <div id="clockdiv">
           <div>
             <span class="days"></span>
@@ -60,18 +67,19 @@
             <div class="smalltext">Seconds</div>
           </div>
         </div>
-        <div class="text">
-          {{#if from}}
-            {{from}} Greeting card
-          {{/if}}
-          <!-- <div>గత జ్ఞాపకాలను నెమరువేస్తూ .. కొత్త ఆశలకు ఊపిరి పోస్తూ .. అభ్యుదయం ఆకాంక్షిస్తూ..</div>
-          <div>మీకు మీ కుటుంబానికి</div>
-          <div>నూతన సంవత్సర శుభాకాంక్షలు</div> -->
-       </div>
+        <marquee behavior="scroll" direction="left" scrolldelay="2" class="">
+          <div class="text">
+            {{#if from}}
+              {{from}} wishing you and your family
+            {{/if}}
+            Happy New Year 2018
+          </div>
+        </marquee>
+
        <nav class="nav navbar-nav">
 
          {{#each items}}
-           <a class="active btn btn-sm" href={{this.src}}>{{this.name}}</a>
+           <a class="active btn btn-sm btn-default" href={{this.src}}>{{this.name}}</a>
          {{/each}}
        </nav>
         <div class="image-div">
