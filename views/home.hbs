@@ -1,17 +1,22 @@
 <html>
   <head>
     <meta charset="uft-8">
-    <title>Wishes for all</title>
+    <title>Create your own greeting card with politicians, gods and actors images</title>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional Bootstrap theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="stylesheets/fireworks.css" rel="stylesheet">
-    <meta name="description" content="greeting card, wishes, god, polititcs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Share your greetings to your dear ones" />
-    <meta property="og:description" content="Share your greetings to your dear ones" />
     <meta property="og:url" content="wishes for all" />
-    <meta property="og:image" content="/images.venkateswara.jpg" />
+    <meta property="og:site_name" content="Wish your Dearones">
+    <meta property="og:title" content="Wish your Dearones" />
+    <meta property="og:description" content="Create your own Greeting card with gods, politicians, actors" />
+    <meta property="og:image" itemprop="image" content="https://images.pexels.com/photos/431722/pexels-photo-431722.jpeg?w=940&h=650&auto=compress&cs=tinysrgb">
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content="1440432930" />
+    <link itemprop="thumbnailUrl" href="https://images.pexels.com/photos/431722/pexels-photo-431722.jpeg?w=940&h=650&auto=compress&cs=tinysrgb">
+    <meta property="og:image:type" content="image/jpeg">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -29,6 +34,9 @@
       enable_page_level_ads: true
     });
   </script>
+  <span itemprop="image" itemscope itemtype="image/jpeg">
+     <link itemprop="url" href="http://www.yoursite.com/yourimage.jpg">
+   </span>
   <div class="container-fluid">
   <div class="row">
 
@@ -54,9 +62,11 @@
         </div>
         <div class="text">
           {{#if from}}
-            {{from}} wishing you and your family
+            {{from}} Greeting card
           {{/if}}
-          Happy New Year 2018
+          <!-- <div>గత జ్ఞాపకాలను నెమరువేస్తూ .. కొత్త ఆశలకు ఊపిరి పోస్తూ .. అభ్యుదయం ఆకాంక్షిస్తూ..</div>
+          <div>మీకు మీ కుటుంబానికి</div>
+          <div>నూతన సంవత్సర శుభాకాంక్షలు</div> -->
        </div>
        <nav class="nav navbar-nav">
 
@@ -67,27 +77,53 @@
         <div class="image-div">
          <div><img alt="User Pic dd" src='/images/venkateswara.jpg' class="img-circle img-responsive"></div>
          <br/>
-         <button onclick="document.getElementById('whatsapp-modal-dialog').style.display='block'" class="wa_btn wa_btn_s" style="width:auto;">Share</button>
-         <!-- <a href="" data-text="" data-href="" class="wa_btn wa_btn_s" id="whatsapp-modal-dialog" style="display:none">Share</a> -->
+         <a href="#whatsapp-modal-dialog" class="wa_btn wa_btn_s" data-toggle="modal">Share</a>
+         <!-- <button onclick="document.getElementById('whatsapp-modal-dialog').style.display='block'" class="wa_btn wa_btn_s" style="width:auto;">Share</button> -->
        </div>
        <br/>
-       <!-- <form action="/" class="form-group">
-         <input type="text" id="from" name="from" class="form-control" />
-         <input type="hidden" name="lan" id="lan" value={{language}}>
-           <input type="hidden" name="name" id="name" value={{name}} >
-         <input type="submit" value="Submit" class="btn btn-primary">
-       </form> -->
 
-      <div id="whatsapp-modal-dialog" class="modal">
+      <!-- <div id="whatsapp-modal-dialog" class="modal">
         <div class="container">
           <label><b></b></label>
           <input type="hidden" name="lan" id="lan" value={{language}}>
           <input type="hidden" name="name" id="name" value={{name}} >
-          <input type="text" placeholder="Hey!!! Enter Your Name" name="from" id="from" required>
-          <a href="" class="share-whats-app">Submit</a>
+          <input type="text" placeholder="Hey!!! Enter Your Name" name="from" id="from" required autofocus>
           <button type="button" onclick="document.getElementById('whatsapp-modal-dialog').style.display='none'" class="cancelbtn btn btn-default">Cancel</button>
+          <a href="" class="share-whats-app cancelbtn btn btn-success">Share</a>
         </div>
-      </div>
+      </div> -->
+
+        <!-- Modal HTML -->
+        <div id="whatsapp-modal-dialog" class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Greeting Card</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <input type="hidden" name="lan" id="lan" value={{language}}>
+                  <input type="hidden" name="name" id="name" value={{name}} >
+                  <div class="form-group">
+                  <label for="inputName">Enter your name and send</label>
+                  <div>
+                    <i class="em em-point_down"></i>
+                    <i class="em em-point_down"></i>
+                    <i class="em em-point_down"></i>
+                    <i class="em em-point_down"></i>
+                  </div>
+                  <input type="text" class="form-control" name="from" id="from" autofocus>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success share-whats-app">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div>
           <div class="bomb-rocket"></div>
@@ -192,18 +228,19 @@ $(document).ready(function() {
   };
    $(document).on("click", '.share-whats-app', function() {
      debugger;
-    // if(!isMobile.any() ) {
+    if(!isMobile.any() ) {
       var lan = $('#lan').val();
       var name = $('#name').val();
       var from = $('#from').val();
-      var message = "http://www.wishess4all.com?lan="+lan+"&name="+name+"&from="+from;
-      window.location.href = message;
+      var message = 'http://www.wishess4all.com/?lan='+lan+'&name='+name+'&from='+from;
+      var whatsapp_url =  'whatsapp://send?text=' + encodeURI(message);
+      window.location.href = encodeURI(whatsapp_url);
       return false;
       // window.location.href = whatsapp_url;
       // return false;
-    // } else {
-    //   alert("Please share this article in mobile device");
-    // }
+    } else {
+      alert("Please share this article in mobile device");
+    }
   });
 });
 
