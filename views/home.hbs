@@ -30,10 +30,17 @@
     });
   </script>
   <div class="container-fluid">
+    <marquee behavior="scroll" direction="down" scrolldelay="4" class="anim-down">
+      
+    </marquee>
+    <marquee behavior="scroll" direction="up" scrolldelay="4" class="anim-up">
+
+    </marquee>
   <div class="row">
 
     <div class="col-sm-12 col-lg-12 col-xs-12 col-md-12">
       <div class="main-div">
+
         <div id="clockdiv">
           <div>
             <span class="days"></span>
@@ -52,22 +59,24 @@
             <div class="smalltext">Seconds</div>
           </div>
         </div>
-        <div class="text">
-          {{#if from}}
-            {{from}} wishing you and your family
-          {{/if}}
-          Happy New Year 2018
-       </div>
+        <marquee behavior="scroll" direction="left" scrolldelay="2" class="">
+          <div class="text">
+            {{#if from}}
+              {{from}} wishing you and your family
+            {{/if}}
+            Happy New Year 2018
+          </div>
+        </marquee>
        <nav class="nav navbar-nav">
 
          {{#each items}}
-           <a class="active btn btn-sm" href={{this.src}}>{{this.name}}</a>
+           <a class="active btn btn-sm btn-default" href={{this.src}}>{{this.name}}</a>
          {{/each}}
        </nav>
         <div class="image-div">
          <div><img alt="User Pic dd" src='/images/venkateswara.jpg' class="img-circle img-responsive"></div>
          <br/>
-         <button onclick="document.getElementById('whatsapp-modal-dialog').style.display='block'" class="wa_btn wa_btn_s" style="width:auto;">Share</button>
+         <button onclick="document.getElementById('whatsapp-modal-dialog').style.display='block'" class="wa_btn wa_btn_s " style="width:auto;">Share</button>
          <!-- <a href="" data-text="" data-href="" class="wa_btn wa_btn_s" id="whatsapp-modal-dialog" style="display:none">Share</a> -->
        </div>
        <br/>
