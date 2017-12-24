@@ -41,6 +41,7 @@ var path = require('path'),
     fs = require('fs');
 var UUID = require('uuid-js');
 var url = require('url');
+var querystring = require('querystring');
 app.use(function(req, res, next) {
     req.getUrl = function() {
       return req.protocol + "://" + req.get('host') + req.originalUrl;
@@ -73,83 +74,79 @@ const client = new Client({
 //   query.on('end', () => { client.end(); });
 
 app.get('/', function (req, res) {
-
-  // var name = req.query.name;
-  // var from = req.query.from || '';
-  // var language = req.query.lan || 'telugu';
-  var params= {};
+  let parsedUrl = url.parse(querystring.unescape(req.url));
+  let params = querystring.parse(parsedUrl.query) || {};
   var query = 'SELECT * FROM images WHERE language= $1';
   // params.language = language;
-  console.log(req.headers);
-  var name = req.query.name|| 'jagan';
-  var from = req.query.from || '';
-  var language = req.query.language || 'telugu';
+  // console.log(req.headers);
+  var name = params.name|| 'NewYear';
+  var from = params.from || '';
+  var language = params.language || 'telugu';
 
   var path = req.getUrl();
-  var items = getItems(req.query);
+  var items = getItems(params);
   var image = items.filter(image => image.name === name);
-  console.log(image);
-  var default_link = "https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg";
+  // var default_link = "https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg";
   // res.render('home', {image: default_link, items: [], from: from});
   res.render('home', {image: image[0].link, items: items, from: from, language: language, name: name, url: path});
-  // if(language){
-  //   db.any(query, [language])
-  //   .then(images => {
-  //     console.log("success");
-  //     images.forEach( function (item){
-  //       item.link = 'https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/'+encodeURI(item.image);
-  //       item.src = '/?language='+params.language+'&name='+item.image_name;
-  //     });
-  //     var image = images.filter(image => image.image_name === name);
-  //     if(image.length>0){
-  //       // console.log(image);
-  //       link = image[0].link;
-  //       res.render('home', {image: image[0].link, items: images, from: from, language: language, name: name, url: path});
-  //     }
-  //     else{
-  //       res.render('home', {image: default_link, items: images, from: from, language: language, name: name, url: path});
-  //     }
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //     res.render('home', {image: default_link, items: [], from: ''});
-  //   });
-  //   res.render('home', {image: default_link, items: [], from: ''});
-  // }else{
-  //   res.render('home', {image: default_link, items: [], from: ''});
-  // }
 });
 
 
 function getItems(params){
-  var name = params.name|| 'jagan';
+  var name = params.name|| 'YSRCP';
   var from = params.from || '';
   var language = params.language || 'telugu';
   var telugu = [{
-    "name" : 'venkateswara_swamy',
-    "link" : 'https://storage.cloud.google.com/wishesonline-188118.appspot.com/61nCf7fw4OL.jpg',
-    "src" : '/?language='+language+'&name=venkateswara_swamy&from='+from
+    "name" : "VenkateswaraSwamy",
+    "link" : "/images/venkateswara.jpg",
+    "src" : "/?language="+language+"&name=VenkateswaraSwamy&from="+from
   },
   {
-    "name" : 'jagan',
-    'link' : 'https://storage.cloud.google.com/wishesonline-188118.appspot.com/61nCf7fw4OL.jpg',
-    "src" : '/?language='+language+'&name=jagan&from='+from
-  }];
+    "name" : "YSRCP",
+    "link" : "/images/ysrcp.jpg",
+    "src" : "/?language="+language+"&name=YSRCP&from="+from
+  },
+  {
+    "name" : "JanaSena",
+    "link" : "/images/janasena.jpg",
+    "src" : "/?language="+language+"&name=JanaSena&from="+from
+  },
+  {
+    "name" : "SaiBaba",
+    "link" : "/images/shirdi_sai_baba.jpg",
+    "src" : "/?language="+language+"&name=SaiBaba&from="+from
+  },
+  {
+    "name" : "NewYear",
+    "link" : "/images/new_year_xmas.gif",
+    "src" : "/?language="+language+"&name=NewYear&from="+from
+  },
+  {
+    "name" : "Xmas",
+    "link" : "/images/x-mas.gif",
+    "src" : "/?language="+language+"&name=Xmas&from="+from
+  },
+  {
+    "name" : "AyyapaSwamy",
+    "link" : "/images/ayyappa_swamy.jpg",
+    "src" : "/?language="+language+"&name=AyyapaSwamy&from="+from
+  }
+  ];
   if(language === "telugu"){
     return telugu;
   }
 }
 
-// var storage = GoogleCloudStorage({
-//   projectId: 'wishesonline-188118',
-//   keyFilename: 'keyfile.json'
-// });
-//
-// var BUCKET_NAME = 'wishes_images';
-// // https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/bucket
-// var myBucket = storage.bucket(BUCKET_NAME);
-//
-//
+var storage = GoogleCloudStorage({
+  projectId: 'wishesonline-188118',
+  keyFilename: 'keyfile.json'
+});
+
+var BUCKET_NAME = 'wishes_images';
+https://googlecloudplatform.github.io/google-cloud-node/#/docs/google-cloud/0.39.0/storage/bucket
+var myBucket = storage.bucket(BUCKET_NAME);
+
+
 // app.post('/upload', function (req, res) {
 //   if (!req.files){
 //     return res.status(400).send('No files were uploaded.');
