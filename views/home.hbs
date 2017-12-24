@@ -259,9 +259,10 @@ $(document).ready(function() {
       var uri = ''+lan+'&name='+name+'&from='+from;
       var link = 'http://www.wishess4all.com/?lan='+encodeURIComponent(uri);
       var fakeLink = document.createElement('a');
-      fakeLink.setAttribute('href', 'whatsapp://send?text=Create your own greetingcards with gods, politicians and actors images '+encodeURIComponent(link));
+      fakeLink.setAttribute('href', 'whatsapp://send?text=Create your own greeting cards with gods, politicians and actors images for free '+encodeURIComponent(link));
       fakeLink.setAttribute('data-action', 'share/whatsapp/share');
       fakeLink.click();
+      params.share=true;
       post('http://www.wishess4all.com/', params);
     } else {
       alert("Please share this article in mobile device");

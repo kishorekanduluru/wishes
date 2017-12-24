@@ -12,6 +12,8 @@ var busboy = require("then-busboy");
 var formidable = require("formidable");
 var fileUpload = require('express-fileupload');
 var shortid = require('shortid');
+const NodeCache = require( "node-cache" );
+const myCache = new NodeCache();
 
 
 // parse application/x-www-form-urlencoded
@@ -72,71 +74,164 @@ const client = new Client({
 // const query = client.query(
 //   'select * from images');
 //   query.on('end', () => { client.end(); });
+var andhra = {};
+andhra.ysrcp = 20;
+andhra.tdp = 20;
+andhra.janasena = 20;
+success = myCache.set( "andhra", andhra, 10000);
 
 app.get('/', function (req, res) {
+
   let parsedUrl = url.parse(querystring.unescape(req.url));
   let params = querystring.parse(parsedUrl.query) || {};
-  var query = 'SELECT * FROM images WHERE language= $1';
-  // params.language = language;
-  // console.log(req.headers);
-  var name = params.name|| 'NewYear';
-  var from = params.from || '';
-  var language = params.language || 'telugu';
 
+  if(params.share){
+    if(params.name === "YSRCP"){
+      andhra.ysrcp+=1;
+    }
+    else if(params.name === "TDP"){
+      andhra.tdp+=1;
+    }else if(params.name === "JanaSena"){
+      andhra.janasena+=1;
+    }
+    myCache.set( "andhra", andhra, 10000 );
+  }
+
+  // var query = 'SELECT * FROM images WHERE language= $1';
+  var name = params.name;
+  var from = params.from || '';
+  var language = params.language || 'english';
+  if(typeof name === 'undefined'){
+    if(language === 'english'){
+      name = 'NewYear';
+    }else{
+      name = 'VenkateswaraSwamy';
+    }
+  }
   var path = req.getUrl();
   var items = getItems(params);
+  var parties = getParties(params);
+
+  var value = myCache.get("andhra");
+  console.log(value);
   var image = items.filter(image => image.name === name);
-  // var default_link = "https://storage.cloud.google.com/staging.wishesonline-188118.appspot.com/61nCf7fw4OL.jpg";
+  var default_link = "/images/new_year_xmas.gif";
   // res.render('home', {image: default_link, items: [], from: from});
-  res.render('home', {image: image[0].link, items: items, from: from, language: language, name: name, url: path});
+  res.render('home', {image: image[0].link || default_link, items: items, from: from, language: language, name: name, url: path});
 });
 
 
 function getItems(params){
-  var name = params.name|| 'YSRCP';
+  var name = params.name;
   var from = params.from || '';
-  var language = params.language || 'telugu';
-  var telugu = [{
-    "name" : "VenkateswaraSwamy",
-    "link" : "/images/venkateswara.jpg",
-    "src" : "/?language="+language+"&name=VenkateswaraSwamy&from="+from
-  },
-  {
-    "name" : "YSRCP",
-    "link" : "/images/ysrcp.jpg",
-    "src" : "/?language="+language+"&name=YSRCP&from="+from
-  },
-  {
-    "name" : "JanaSena",
-    "link" : "/images/janasena.jpg",
-    "src" : "/?language="+language+"&name=JanaSena&from="+from
-  },
-  {
-    "name" : "SaiBaba",
-    "link" : "/images/shirdi_sai_baba.jpg",
-    "src" : "/?language="+language+"&name=SaiBaba&from="+from
-  },
-  {
-    "name" : "NewYear",
-    "link" : "/images/new_year_xmas.gif",
-    "src" : "/?language="+language+"&name=NewYear&from="+from
-  },
-  {
-    "name" : "Xmas",
-    "link" : "/images/x-mas.gif",
-    "src" : "/?language="+language+"&name=Xmas&from="+from
-  },
-  {
-    "name" : "AyyapaSwamy",
-    "link" : "/images/ayyappa_swamy.jpg",
-    "src" : "/?language="+language+"&name=AyyapaSwamy&from="+from
-  }
+  var language = params.language || 'english';
+
+  var gods = [
+    {
+      "name" : "VenkateswaraSwamy",
+      "link" : "/images/venkateswara.jpg",
+      "src" : "/?language="+language+"&name=VenkateswaraSwamy&from="+from
+    },
+    {
+      "name" : "SaiBaba",
+      "link" : "/images/shirdi_sai_baba.jpg",
+      "src" : "/?language="+language+"&name=SaiBaba&from="+from
+    },
+    {
+      "name" : "AyyapaSwamy",
+      "link" : "/images/ayyappa_swamy.jpg",
+      "src" : "/?language="+language+"&name=AyyapaSwamy&from="+from
+    }
   ];
+
+  var new_year = [
+    {
+      "name" : "NewYear",
+      "link" : "/images/new_year_xmas.gif",
+      "src" : "/?language="+language+"&name=NewYear&from="+from
+    },
+    {
+      "name" : "Xmas",
+      "link" : "http://media3.giphy.com/media/Yvy3WadZUIro4/giphy.gif",
+      "src" : "/?language="+language+"&name=Xmas&from="+from
+    }
+  ];
+
+
+  var andhra_parties = [
+    {
+      "name" : "YSRCP",
+      "link" : "/images/ysrcp.jpg",
+      "src" : "/?language="+language+"&name=YSRCP&from="+from
+    },
+    {
+      "name" : "TDP",
+      "link" : "/images/janasena.jpg",
+      "src" : "/?language="+language+"&name=JanaSena&from="+from
+    },
+    {
+      "name" : "JanaSena",
+      "link" : "/images/janasena.jpg",
+      "src" : "/?language="+language+"&name=JanaSena&from="+from
+    }
+  ];
+
+  var telangana_parties = [
+    {
+      "name" : "TRS",
+      "link" : "/images/ysrcp.jpg",
+      "src" : "/?language="+language+"&name=YSRCP&from="+from
+    },
+    {
+      "name" : "Congress",
+      "link" : "/images/janasena.jpg",
+      "src" : "/?language="+language+"&name=JanaSena&from="+from
+    },
+    {
+      "name" : "Telanga Talli",
+      "link" : "/images/janasena.jpg",
+      "src" : "/?language="+language+"&name=JanaSena&from="+from
+    }
+  ];
+
+  var tamil_parties = [
+    {
+      "name" : "Rajnikanth",
+      "link" : "/images/ysrcp.jpg",
+      "src" : "/?language="+language+"&name=YSRCP&from="+from
+    },
+    {
+      "name" : "Vijay",
+      "link" : "/images/janasena.jpg",
+      "src" : "/?language="+language+"&name=JanaSena&from="+from
+    },
+    {
+      "name" : "Ajay",
+      "link" : "/images/janasena.jpg",
+      "src" : "/?language="+language+"&name=JanaSena&from="+from
+    }
+  ];
+
   if(language === "telugu"){
-    return telugu;
+    return andhra_parties.concat(gods).concat(new_year);
+  }else if(language === "english"){
+    return new_year.concat(gods);
+  }else if(language === "telugu_"){
+    return new_year.concat(gods);
+  }else if(language === "tamil"){
+    return new_year.concat(gods);
+  }else if(language === "kannada"){
+    return new_year.concat(gods);
   }
 }
 
+
+function getParties(params){
+  if(params.language == "telugu"){
+
+  }
+
+}
 var storage = GoogleCloudStorage({
   projectId: 'wishesonline-188118',
   keyFilename: 'keyfile.json'
