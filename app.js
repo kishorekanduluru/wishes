@@ -113,7 +113,7 @@ app.get('/', function (req, res) {
   var parties = getParties(params);
 
   var value = myCache.get("andhra");
-  console.log(value);
+  // console.log(value);
   var image = items.filter(image => image.name === name);
   var default_link = "/images/new_year_xmas.gif";
   // res.render('home', {image: default_link, items: [], from: from});
@@ -147,7 +147,7 @@ function getItems(params){
   var new_year = [
     {
       "name" : "NewYear",
-      "link" : "/images/new_year_xmas.gif",
+      "link" : "https://fernonline.files.wordpress.com/2015/01/happy-new-year-2012-8.gif",
       "src" : "/?language="+language+"&name=NewYear&from="+from
     },
     {
@@ -161,18 +161,23 @@ function getItems(params){
   var andhra_parties = [
     {
       "name" : "YSRCP",
-      "link" : "/images/ysrcp.jpg",
+      "link" : "/images/YSRCP_1.jpg",
       "src" : "/?language="+language+"&name=YSRCP&from="+from
     },
     {
       "name" : "TDP",
-      "link" : "/images/janasena.jpg",
-      "src" : "/?language="+language+"&name=JanaSena&from="+from
+      "link" : "/images/TDP.jpg",
+      "src" : "/?language="+language+"&name=TDP&from="+from
     },
     {
       "name" : "JanaSena",
       "link" : "/images/janasena.jpg",
       "src" : "/?language="+language+"&name=JanaSena&from="+from
+    },
+    {
+      "name" : "APHolidaysList",
+      "link" : "/images/APlist.jpg",
+      "src" : "/?language="+language+"&name=APHolidaysList&from="+from
     }
   ];
 

@@ -1,7 +1,276 @@
 <html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111595464-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111595464-1');
+    </script>
+
+    <meta charset="uft-8">
+    <title>Create your own greeting card with politicians, gods and actors images</title>
+    <meta name="description" content="Create your own Greeting card with gods, politicians, actors">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="How to change the address bar color in Chrome, Firefox, Opera, Safari" />
+    <meta property="og:description" content="How to change the address bar color in Chrome, Firefox, Opera, Safari" />
+    <meta property="og:url" content="http://webdevelopmentscripts.com/64-how-to-change-the-address-bar-color-in-chrome-firefox-opera-safari" />
+    <meta property="og:image" content="http://webdevelopmentscripts.com/post-images/685b-change-browser-address-bar-color-chrome-android.jpeg" />
+    <meta property="og:site_name" content="Wish your Dearones" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="stylesheets/fireworks.css" rel="stylesheet">
+
+    <link itemprop="thumbnailUrl" href="https://dl.myket.ir/newresizing/resize/medium/png/icon/com.happy.new_year_f4c7d115-7186-4c73-a4d2-b0005a928678_.png">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-2977947272382604",
+        enable_page_level_ads: true
+      });
+    </script>
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="js/requestanimframe.js"></script>
+  <script src="js/fireworks.js"></script>
+  <script src="js/whatsapp-button.js"></script>
+  <script src="js/fs.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <body>
-  <div>
-    <img alt="User Pic dd" src={{image}} class="img-circle img-responsive">
+  <div class="container-fluid">
+    <marquee behavior="scroll" direction="down" scrolldelay="4" class="anim-down">
+      <img alt="frame-border" src='/images/frame-2.2.png' />
+      <img alt="frame-border" src='/images/frame-2.2.png' />
+      <img alt="frame-border" src='/images/frame-2.2.png' />
+    </marquee>
+    <marquee behavior="scroll" direction="up" scrolldelay="4" class="anim-up">
+      <img alt="frame-border" src='/images/frame-2.2.png' />
+      <img alt="frame-border" src='/images/frame-2.2.png' />
+      <img alt="frame-border" src='/images/frame-2.2.png' />
+    </marquee>
+  <div class="row">
+
+    <div class="col-sm-12 col-lg-12 col-xs-12 col-md-12">
+      <div class="main-div">
+        <div id="clockdiv">
+          <div>
+            <span class="days"></span>
+            <div class="smalltext">Days</div>
+          </div>
+          <div>
+            <span class="hours"></span>
+            <div class="smalltext">Hours</div>
+          </div>
+          <div>
+            <span class="minutes"></span>
+            <div class="smalltext">Minutes</div>
+          </div>
+          <div>
+            <span class="seconds"></span>
+            <div class="smalltext">Seconds</div>
+          </div>
+        </div>
+        <marquee behavior="scroll" direction="left" scrollamount="10" class="">
+          <div class="text">
+            {{#if from}}
+              <font size="3" color="red">{{from}}</font> wishing you and your family
+            {{/if}}
+            Advanced Happy New Year 2018
+          </div>
+        </marquee>
+
+        <div class="image-div">
+         <div><img alt="User Pic dd" src={{image}} class="img-circle img-responsive"></div>
+         <marquee behavior="scroll" direction="left" scrolldelay="2" class="">
+           <div>
+             <font color="white">
+               Hope the New Year with it brings just happiness for you and not a single tear, Since everyone just loves you
+               May all your problems, never again bother you, this is my special New Year wish for you.
+             </font>
+           </div>
+         </marquee>
+         <br/>
+         <a href="#whatsapp-modal-dialog" class="wa_btn wa_btn_s" data-toggle="modal">Share</a>
+         <!-- <button onclick="document.getElementById('whatsapp-modal-dialog').style.display='block'" class="wa_btn wa_btn_s" style="width:auto;">Share</button> -->
+         <nav class="nav navbar-nav">
+           {{#each items}}
+             <a class="active btn btn-sm btn-default" href={{this.src}}>{{this.name}}</a>
+           {{/each}}
+         </nav>
+       </div>
+       <br/>
+
+        <!-- Modal HTML -->
+        <div id="whatsapp-modal-dialog" class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Greeting Card</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <input type="hidden" name="lan" id="lan" value={{language}}>
+                  <input type="hidden" name="name" id="name" value={{name}} >
+                  <div class="form-group">
+                  <label for="inputName">Enter your name and send</label>
+                  <div>
+                    <i class="em em-point_down"></i>
+                    <i class="em em-point_down"></i>
+                    <i class="em em-point_down"></i>
+                    <i class="em em-point_down"></i>
+                  </div>
+                  <input type="text" class="form-control" name="from" id="from" autofocus>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success share-whats-app">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="bomb-rocket"></div>
+          <div class="bomb-rocket"></div>
+          <div class="normal-rocket"></div>
+          <div class="normal-rocket"></div>
+        </div>
+      </div>
+    </div>
   </div>
-</body>
+</div>
+<script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="js/whatsapp-button.js";h.appendChild(s);}</script>
+
+<script type="text/javascript">
+
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var new_year = new Date("January 01, 2018 00:00:00");
+var new_year_secs= new_year.getTime();
+var currentTime = new Date();
+var currentTime_secs= currentTime.getTime();
+var diff = new_year_secs-currentTime_secs;
+var deadline = new Date(Date.parse(new Date()) + diff);
+initializeClock('clockdiv', deadline);
+
+var modal = document.getElementById('whatsapp-modal-dialog');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+      modal.style.display = "none";
+  }
+}
+
+
+$(document).ready(function() {
+  var isMobile = {
+    Android: function() {
+      return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+      return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+      return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+      return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function() {
+      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+  };
+   $(document).on("click", '.share-whats-app', function() {
+    if(isMobile.any()) {
+      var lan = $('#lan').val();
+      var name = $('#name').val();
+      var from = $('#from').val();
+      var params = {}
+      params.name = name;
+      params.language = lan;
+      params.from = from;
+      var uri = ''+lan+'&name='+name+'&from='+from;
+      debugger;
+      var link = 'http://www.wishess4all.com/?language='+encodeURIComponent(uri);
+      var fakeLink = document.createElement('a');
+      fakeLink.setAttribute('href', 'whatsapp://send?text=Click here to see my gift to you!!! '+encodeURIComponent(link));
+
+      fakeLink.setAttribute('data-action', 'share/whatsapp/share');
+      fakeLink.click();
+      params.share=true;
+      post('http://www.wishess4all.com/', params);
+    } else {
+      alert("Please share this article in mobile device");
+    }
+  });
+  function post(path, params, method) {
+    method = method || "get";
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+    for(var key in params) {
+      if(params.hasOwnProperty(key)) {
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", key);
+        hiddenField.setAttribute("value", params[key]);
+
+        form.appendChild(hiddenField);
+      }
+    }
+    document.body.appendChild(form);
+    form.submit();
+  }
+});
+
+</script>
 </html>
