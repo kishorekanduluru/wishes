@@ -260,3 +260,103 @@ li a:hover:not(.active) {
     height: 100vh;
     right: 0;
 }
+
+
+/* Profile page css */
+body.new {
+  background: radial-gradient(ellipse at bottom, #8F0314 0%, #090a0f 100%)
+}
+
+.container-fluid .row {
+  position: relative;
+}
+
+.container-fluid .container-mobile {
+  background: url(../images/bg-new.jpg) center top repeat-y;
+  min-width: 360px;
+  max-width: 425px;
+  /* width: 100%; */
+  background-size: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.side-bar {
+  background: url(../images/side-pattern-1.png) left top repeat-y;
+  height: 100vh;
+  width: 20px;
+  padding: 0;
+
+}
+
+.left-pattern {
+  /* position: fixed !important; */
+  left: 0;
+}
+.right-pattern {
+  position: fixed !important;
+  right: 0 !important;
+}
+
+.wishes-from {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.wishes-from .wish-user {
+  font-weight: bold;
+  display: block;
+}
+.wish-msg {
+  background: url(../images/happy-new-yr-msg.png) 50% 50% no-repeat;
+  height: 215px;
+}
+
+.carousel-inner .item .content-img {
+  border-radius: 200px;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+  border: 4px solid #cccccc;
+}
+
+.img1 {
+  background: url(../images/venkateswara.jpg) 50% top no-repeat;
+}
+
+.img2 {
+  background: url(../images/ayyappa_swamy.jpg) 50% top no-repeat;
+}
+
+.img3 {
+  background: url(../images/shirdi_sai_baba.jpg) 50% top no-repeat;
+}
+
+.custom-img {
+  margin-top: 40px;
+}
+.carousel-indicators {
+  margin-bottom: -50px !important;
+}
+
+.row {
+  background: url(../images/side-pattern-1.png) right top repeat-y;
+}
+.body-content {
+  background: url(../images/side-pattern-1.png) left top repeat-y;
+}
+
+.share-link {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.seperator {
+  background: url(../images/seperator.png) 50% top no-repeat;
+  height: 40px;
+}
+@media (max-width: 425px) and (min-width: 320px)   {
+  .carousel-inner .item .content-img {
+  }
+}
